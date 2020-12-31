@@ -1,0 +1,6 @@
+ - Light/Dark mode
+ - i18n
+ - Email API
+ - Whatsapp Link
+ - Portfolio CRUD (Register and retrieve)
+ - 
