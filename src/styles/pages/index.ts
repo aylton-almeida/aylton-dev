@@ -1,3 +1,4 @@
+import { CategoryList } from "@styles/theme";
 import styled from "styled-components";
 
 export const Main = styled.main`
@@ -36,9 +37,27 @@ export const Main = styled.main`
     flex-direction: row;
 
     > button {
-      margin: ${({ theme }) => theme.spacing(0, 1)};
+      margin: ${({ theme }) => theme.spacing(0, 2)};
       height: 48px;
       width: 48px;
+    }
+  }
+
+  .connect-button {
+    border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+    box-shadow: ${({ theme }) => theme.shadows[2]};
+
+    padding: ${({ theme }) => theme.spacing(1, 2)};
+
+    div {
+      display: flex;
+      align-items: center;
+      color: ${CategoryList[CategoryList.length - 1][1]};
+
+      span {
+        margin-left: ${({ theme }) => theme.spacing(2)}px;
+        font-size: 120%;
+      }
     }
   }
 
@@ -50,9 +69,17 @@ export const Main = styled.main`
 
     .icons {
       > button {
-        margin: ${({ theme }) => theme.spacing(0, 2)};
+        margin: ${({ theme }) => theme.spacing(0, 3)};
         height: 64px;
         width: 64px;
+      }
+    }
+
+    .connect-button {
+      div {
+        span {
+          font-size: 140%;
+        }
       }
     }
   }

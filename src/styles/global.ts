@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { kDesktopAppBarHeight, kMobileAppBarHeight } from "@utils/constants";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 

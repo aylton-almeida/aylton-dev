@@ -1,24 +1,13 @@
 import { ContextState } from ".";
 
 export interface AppBarState {
-  color: string | null;
+  color?: string;
   hidden: boolean;
-  title: string;
-  icon: JSX.Element | null;
+  title?: string;
+  icon?: JSX.Element;
 }
 
-let state: AppBarState = {
-  color: null,
-  hidden: true,
-  title: "",
-  icon: null,
-};
-
-function setState(value: AppBarState) {
-  state = {
-    ...state,
-    ...value,
-  };
-}
-
-export const AppBarContext: ContextState<AppBarState> = [state, setState];
+export const AppBarContext: ContextState<AppBarState> = [
+  {} as AppBarState,
+  (state: AppBarState) => {},
+];

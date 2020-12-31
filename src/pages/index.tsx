@@ -1,21 +1,15 @@
 import { Main } from "@styles/pages";
 import { FC, Fragment, ReactNode } from "react";
 import Head from "next/head";
-import { Typography } from "@material-ui/core";
+import { ButtonBase, Typography } from "@material-ui/core";
 import { Chat, Code, Person, School, Work } from "@material-ui/icons";
+import Link from "next/link";
 
 import Perfil from "../assets/images/perfil.png";
 import CustomIconButton from "@components/CustomIconButton";
+import { CategoryList } from "@styles/theme";
 
-const icons: [ReactNode, string, string, string][] = [
-  [<Person fontSize="large" />, "#F2B90F", "Sobre mim", "/sobremim"],
-  [<Work fontSize="large" />, "#D91136", "Experiências", "/experiencias"],
-  [<Code fontSize="large" />, "#29A632", "Tecnologias", "/tecnologias"],
-  [<School fontSize="large" />, "#F28B0C", "Educação", "/educacao"],
-  [<Chat fontSize="large" />, "#9023D9", "Conectar", "/conectar"],
-];
-
-const Home: FC = () => {
+const HomePage: FC = () => {
   return (
     <Main>
       <Head>
@@ -31,16 +25,32 @@ const Home: FC = () => {
         <img src={Perfil} alt="Foto aylton" />
       </div>
       <div className="icons">
-        {icons.map(([icon, color, title], index) => (
-          <Fragment key={index}>
+        {CategoryList.slice(0, -1).map(([Icon, color, title, route], index) => (
+          <Link key={index} href={route}>
             <CustomIconButton color={color} onClick={() => {}} title={title}>
-              {icon}
+              <Icon fontSize="large" />
             </CustomIconButton>
-          </Fragment>
+          </Link>
         ))}
       </div>
+      <ButtonBase className="connect-button">
+        <div>
+          {(() => {
+            const Icon = CategoryList[CategoryList.length - 1][0];
+
+            return (
+              <>
+                <Icon fontSize="large" />
+                <Typography variant="button">
+                  {CategoryList[CategoryList.length - 1][2]}
+                </Typography>
+              </>
+            );
+          })()}
+        </div>
+      </ButtonBase>
     </Main>
   );
 };
 
-export default Home;
+export default HomePage;
