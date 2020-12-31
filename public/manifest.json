@@ -1,0 +1,10 @@
+{
+  "name": "Aylton Dev",
+  "short_name": "Aylton",
+  "theme_color": "#607d8b",
+  "background_color": "#fefefe",
+  "display": "browser",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}

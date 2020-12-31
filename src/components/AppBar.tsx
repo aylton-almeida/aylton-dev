@@ -2,7 +2,7 @@ import { FC, useContext } from "react";
 
 import { AppBar as MuiAppBar, Toolbar } from "@material-ui/core";
 
-import { RootContext, ContextState } from "@store/index";
+import { RootContext } from "@store/index";
 
 const AppBar: FC = () => {
   const {

@@ -10,7 +10,7 @@ export interface AppBarState {
 let state: AppBarState = {
   color: null,
   hidden: true,
-  title: "Test",
+  title: "",
   icon: null,
 };
 

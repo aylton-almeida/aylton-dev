@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
@@ -11,16 +11,28 @@ import { GlobalStyle } from "@styles/global";
 import { DefaultRootValue, RootContext } from "@store/index";
 import theme from "../styles/theme";
 
-const MyApp: FC<AppProps> = ({ Component, pageProps, router }) => {
+const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => {
+  const {
+    appBar: [{ hidden }],
+  } = useContext(RootContext);
+
+  return (
+    <>
+      {!hidden && <AppBar />}
+      <OpacityTransition route={router.route}>
+        <Component {...pageProps} />
+      </OpacityTransition>
+      <GlobalStyle />
+    </>
+  );
+};
+
+const MyApp: FC<AppProps> = (props) => {
   return (
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <RootContext.Provider value={DefaultRootValue}>
-          <AppBar />
-          <OpacityTransition route={router.route}>
-            <Component {...pageProps} />
-          </OpacityTransition>
-          <GlobalStyle />
+          <RootApp {...props} />
         </RootContext.Provider>
       </ThemeProvider>
     </MuiThemeProvider>
