@@ -5,9 +5,9 @@ import { FC, useContext, useEffect } from "react";
 import Head from "next/head";
 import CustomIconButton from "@components/CustomIconButton";
 
-const [Icon, color, title] = CategoryList[0];
+const [Icon, color, title] = CategoryList[2];
 
-const AboutMePage: FC = () => {
+const TechnologiesLayout: FC = () => {
   const {
     theme: [, setTheme],
     appBar: [, setAppBar],
@@ -29,16 +29,12 @@ const AboutMePage: FC = () => {
       ),
       title: title,
     });
-
-    return () => {
-      setAppBar({ hidden: true });
-    };
   }, []);
 
   return (
     <>
       <Head>
-        <title>Sobre Mim</title>
+        <title>{title}</title>
       </Head>
       <Button variant="contained" color="primary">
         ok
@@ -47,4 +43,4 @@ const AboutMePage: FC = () => {
   );
 };
 
-export default AboutMePage;
+export default TechnologiesLayout;

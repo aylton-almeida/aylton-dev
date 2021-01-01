@@ -26,29 +26,31 @@ const HomePage: FC = () => {
       </div>
       <div className="icons">
         {CategoryList.slice(0, -1).map(([Icon, color, title, route], index) => (
-          <Link key={index} href={route}>
+          <Link key={index} href={`/menus/${route}`}>
             <CustomIconButton color={color} onClick={() => {}} title={title}>
               <Icon fontSize="large" />
             </CustomIconButton>
           </Link>
         ))}
       </div>
-      <ButtonBase className="connect-button">
-        <div>
-          {(() => {
-            const Icon = CategoryList[CategoryList.length - 1][0];
+      <Link href={`/menus/${CategoryList[CategoryList.length - 1][3]}`}>
+        <ButtonBase className="connect-button">
+          <div>
+            {(() => {
+              const Icon = CategoryList[CategoryList.length - 1][0];
 
-            return (
-              <>
-                <Icon fontSize="large" />
-                <Typography variant="button">
-                  {CategoryList[CategoryList.length - 1][2]}
-                </Typography>
-              </>
-            );
-          })()}
-        </div>
-      </ButtonBase>
+              return (
+                <>
+                  <Icon fontSize="large" />
+                  <Typography variant="button">
+                    {CategoryList[CategoryList.length - 1][2]}
+                  </Typography>
+                </>
+              );
+            })()}
+          </div>
+        </ButtonBase>
+      </Link>
     </Main>
   );
 };

@@ -1,3 +1,8 @@
+import AboutMeLayout from "@components/layouts/AboutMeLayout";
+import ConnectLayout from "@components/layouts/ConnectLayout";
+import EducationLayout from "@components/layouts/EducationLayout";
+import ExperiencesLayout from "@components/layouts/ExperiencesLayout";
+import TechnologiesLayout from "@components/layouts/TechnologiesLayout";
 import {
   createMuiTheme,
   PaletteColorOptions,
@@ -7,7 +12,7 @@ import {
 } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import { Chat, Code, Person, School, Work } from "@material-ui/icons";
-import { ReactNode } from "react";
+import { FC } from "react";
 
 export function createAppTheme(
   type: PaletteType,
@@ -42,9 +47,9 @@ export const CategoryList: [
   string,
   string
 ][] = [
-  [Person, "#F2B90F", "Sobre mim", "/sobremim"],
-  [Work, "#D91136", "Experiências", "/experiencias"],
-  [Code, "#29A632", "Tecnologias", "/tecnologias"],
-  [School, "#F28B0C", "Educação", "/educacao"],
-  [Chat, "#9023D9", "Conecte-se", "/conectar"],
+  [Person, "#F2B90F", "Sobre mim", "sobremim"],
+  [Work, "#D91136", "Experiências", "experiencias"],
+  [Code, "#29A632", "Tecnologias", "tecnologias"],
+  [School, "#F28B0C", "Educação", "educacao"],
+  [Chat, "#9023D9", "Conecte-se", "conectese"],
 ];

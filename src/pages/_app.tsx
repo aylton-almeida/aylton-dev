@@ -15,7 +15,6 @@ import { RootContext } from "@store/index";
 
 const RootApp: FC<AppProps> = ({ Component, pageProps, router }) => {
   const {
-    appBar: [{ hidden }],
     theme: [{ primary, type }],
   } = useContext(RootContext);
 

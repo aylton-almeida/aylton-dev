@@ -12,12 +12,14 @@ const AppBar: FC = () => {
 
   return (
     <Slide direction="down" in={!hidden} unmountOnExit>
-      <CustomAppBar position="static">
-        <Toolbar className="toolbar">
-          <div className="start-node">{icon}</div>
-          <Typography variant="h6">{title}</Typography>
-        </Toolbar>
-      </CustomAppBar>
+      <div>
+        <CustomAppBar position="static" elevation={2}>
+          <Toolbar className="toolbar">
+            <div className="start-node">{icon}</div>
+            <Typography variant="h6">{title}</Typography>
+          </Toolbar>
+        </CustomAppBar>
+      </div>
     </Slide>
   );
 };
