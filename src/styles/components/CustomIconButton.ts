@@ -11,9 +11,10 @@ export const Container = styled(ButtonBase)<ContainerProps>`
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
     display: grid;
     place-items: center;
+    background-color: ${({ theme }) => theme.palette.background.paper};
 
-    min-height: 48px;
-    min-width: 48px;
+    min-height: 36px;
+    min-width: 36px;
     height: 100%;
     width: 100%;
 

@@ -1,7 +1,11 @@
 import { Button } from "@material-ui/core";
-import { Person } from "@material-ui/icons";
 import { RootContext } from "@store/index";
+import { CategoryList } from "@styles/theme";
 import { FC, useContext, useEffect } from "react";
+import Head from "next/head";
+import CustomIconButton from "@components/CustomIconButton";
+
+const [Icon, color, title] = CategoryList[0];
 
 const AboutMePage: FC = () => {
   const {
@@ -12,13 +16,18 @@ const AboutMePage: FC = () => {
   useEffect(() => {
     setTheme({
       primary: {
-        main: "#000",
+        main: color,
+        contrastText: "#fff",
       },
     });
     setAppBar({
       hidden: false,
-      icon: <Person />,
-      title: "Sobre Mim",
+      icon: (
+        <CustomIconButton color={color}>
+          <Icon />
+        </CustomIconButton>
+      ),
+      title: title,
     });
 
     return () => {
@@ -27,9 +36,14 @@ const AboutMePage: FC = () => {
   }, []);
 
   return (
-    <Button variant="contained" color="primary">
-      ok
-    </Button>
+    <>
+      <Head>
+        <title>Sobre Mim</title>
+      </Head>
+      <Button variant="contained" color="primary">
+        ok
+      </Button>
+    </>
   );
 };
 

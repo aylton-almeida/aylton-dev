@@ -1,7 +1,6 @@
 import { ContextState } from ".";
 
 export interface AppBarState {
-  color?: string;
   hidden: boolean;
   title?: string;
   icon?: JSX.Element;

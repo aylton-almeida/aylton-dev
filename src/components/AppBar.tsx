@@ -1,24 +1,23 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 
-import { AppBar as MuiAppBar, Slide, Toolbar } from "@material-ui/core";
+import { Slide, Toolbar, Typography } from "@material-ui/core";
 
 import { RootContext } from "@store/index";
+import { CustomAppBar } from "@styles/components/AppBar";
 
 const AppBar: FC = () => {
   const {
     appBar: [{ icon, title, hidden }, setAppBarState],
   } = useContext(RootContext);
 
-  // TODO: add color
-
   return (
     <Slide direction="down" in={!hidden} unmountOnExit>
-      <MuiAppBar position="static">
-        <Toolbar>
+      <CustomAppBar position="static">
+        <Toolbar className="toolbar">
           <div className="start-node">{icon}</div>
-          <div className="title">{title}</div>
+          <Typography variant="h6">{title}</Typography>
         </Toolbar>
-      </MuiAppBar>
+      </CustomAppBar>
     </Slide>
   );
 };
