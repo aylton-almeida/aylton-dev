@@ -18,7 +18,7 @@ export const Container = styled.div`
   }
 
   .layout-container {
-    flex: 3;
+    flex: 5;
     position: relative;
 
     .layout {
@@ -37,12 +37,22 @@ export const Container = styled.div`
     align-items: center;
 
     .nav-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
       background-color: ${({ theme }) => theme.palette.background.default};
       box-shadow: ${({ theme }) => theme.shadows[2]};
       border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+      list-style-type: none;
 
       height: 100%;
       width: 100%;
+
+      li {
+        height: 48px;
+        width: 48px;
+      }
     }
   }
 
@@ -63,9 +73,16 @@ export const Container = styled.div`
       flex: 2;
 
       .nav-card {
+        flex-direction: column;
+
         padding: 0;
         height: 70%;
         width: 90%;
+
+        li {
+          height: 56px;
+          width: 80%;
+        }
       }
     }
   }

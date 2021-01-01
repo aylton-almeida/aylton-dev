@@ -9,8 +9,9 @@ export const Container = styled(ButtonBase)<ContainerProps>`
   && {
     box-shadow: ${({ theme }) => theme.shadows[2]};
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: ${({ theme }) => theme.palette.background.paper};
 
     min-height: 36px;
@@ -24,6 +25,13 @@ export const Container = styled(ButtonBase)<ContainerProps>`
 
     > :first-child {
       color: ${({ color }) => color};
+    }
+
+    .title {
+      color: ${({ color }) => color};
+
+      font-size: 140%;
+      margin-left: ${({ theme }) => theme.spacing(3)}px;
     }
   }
 `;
