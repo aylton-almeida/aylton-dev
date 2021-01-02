@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { FC } from "react";
+import { FC, useContext, useEffect } from "react";
 import Link from "next/link";
 import { Container } from "@styles/pages/menus/[page]";
 import {
@@ -18,6 +18,8 @@ import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import { CategoryList as Categories } from "@styles/theme";
 import { DefaultTheme } from "styled-components";
 import CustomIconButton from "@components/CustomIconButton";
+import Head from "next/head";
+import { RootContext } from "@store/index";
 
 const layouts = [
   AboutMeLayout,
@@ -40,13 +42,48 @@ const Menus: FC = () => {
     query: { page },
   } = useRouter();
   const currentRoute = page || "sobremim";
+  const [CategoryIcon, categoryColor, categoryTitle] = CategoryList.find(
+    ([, , , route]) => route === currentRoute
+  );
 
   const matchMd = useMediaQuery((theme: DefaultTheme) =>
     theme.breakpoints.up("md")
   );
 
+  const {
+    theme: [, setTheme],
+    appBar: [, setAppBar],
+  } = useContext(RootContext);
+
+  useEffect(() => {
+    setTheme({
+      primary: {
+        main: categoryColor,
+        contrastText: "#fff",
+      },
+    });
+    setAppBar({
+      hidden: false,
+      icon: (
+        <CustomIconButton color={categoryColor}>
+          <CategoryIcon />
+        </CustomIconButton>
+      ),
+      title: categoryTitle,
+    });
+
+    return () => {
+      setAppBar({
+        hidden: true,
+      });
+    };
+  }, [categoryColor, categoryTitle, CategoryIcon]);
+
   return (
     <Container>
+      <Head>
+        <title>{categoryTitle}</title>
+      </Head>
       <section className="layout-container">
         {CategoryList.map(([, , , route, Layout]) => (
           <Fade
